@@ -4,10 +4,10 @@
 module regfile(input  wire        clk, 
                input  wire        we3,           //señal de habilitación de escritura
                input  wire [3:0]  ra1, ra2, wa3, //direcciones de regs leidos y reg a escribir
-               input  wire [7:0]  wd3, 			 //dato a escribir
-               output wire [7:0]  rd1, rd2);     //datos leidos
+               input  wire [15:0]  wd3, 			 //dato a escribir
+               output wire [15:0]  rd1, rd2);     //datos leidos
 
-  reg [7:0] regb[0:15]; //memoria de 16 registros de 8 bits de ancho
+  reg [15:0] regb[0:15]; //memoria de 16 registros de 8 bits de ancho
 
   initial
   begin
