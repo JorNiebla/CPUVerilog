@@ -17,11 +17,11 @@
 
 //Nemónico de cada instrucción
 
-const char* mnemonics[] = { "mov", "cpl", ...  , "nop" };
+const char* mnemonics[] = { "mov", "cpl", "nop" };
 
 //Opcode de cada instrucción
 
-const char* opcodes[] = { "0000", "0001", ... , "111011" };
+const char* opcodes[] = { "0000", "0001", "111011" };
 
 // Operandos
 
@@ -29,7 +29,7 @@ const char* opcodes[] = { "0000", "0001", ... , "111011" };
 
 // Codificación de los operandos de cada instrucción (C: cte datos, D: cte de dirección de código, R: campo de registro)
 
-const char* operands[] = { "CR", "CR", ... , "" };
+const char* operands[] = { "CR", "CR", "" };
 
 //Tamaños de operandos
 #define CONSTANTSIZE 8     //Tamaño en bits de una constante C (o dirección de datos si así se considera)
@@ -41,7 +41,6 @@ const char* operands[] = { "CR", "CR", ... , "" };
 //Posiciones (bit más significativo) de los operandos en la instrucción (de INSTSIZE-1 a 1), 0 significa no usado (no hay operandos de sólo 1 bit)
 const int posoper[NUMINS][MAXNUMOPER] = { {11, 3, 0},
                                           {11, 3, 0},
-                                             ...
                                           {0, 0, 0} };
 
 //*************************************************************************************************************************************************************************
