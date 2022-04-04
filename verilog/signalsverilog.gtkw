@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Apr  4 01:25:59 2022
+[*]
+[dumpfile] "/home/jorge/CPUVerilog/verilog/cpu_tb.vcd"
+[dumpfile_mtime] "Mon Apr  4 01:22:12 2022"
+[dumpfile_size] 6798
+[savefile] "/home/jorge/CPUVerilog/verilog/signalsverilog.gtkw"
+[timestart] 0
+[size] 1908 999
+[pos] -1 -1
+*-15.156052 87400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] cpu_tb.
+[treeopen] cpu_tb.micpu.
+[treeopen] cpu_tb.micpu.camino.
+[sst_width] 254
+[signals_width] 181
+[sst_expanded] 1
+[sst_vpaned_height] 281
+@28
+cpu_tb.micpu.reset
+cpu_tb.micpu.clk
+cpu_tb.micpu.camino.INST[31:0]
+cpu_tb.micpu.camino.opcode[15:0]
+cpu_tb.micpu.op_alu[2:0]
+cpu_tb.micpu.pop
+cpu_tb.micpu.push
+cpu_tb.micpu.s_inc
+cpu_tb.micpu.s_inm
+cpu_tb.micpu.we3
+cpu_tb.micpu.wez
+@29
+cpu_tb.micpu.z
+[pattern_trace] 1
+[pattern_trace] 0

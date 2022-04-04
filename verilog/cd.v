@@ -21,7 +21,7 @@ module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, input wire [
     sum SUMDIR(10'b1,counter,outSUMDIR);
     mux2 #(10) MUXDIR(DIR_SALTO,outSUMDIR,s_inc,outMUXDIR);
     
-    mux2 #(16) MUXINM(RD1,INM[27:12],s_inm,outMUXINM);
+    mux2 #(16) MUXINM(RD1,INM,s_inm,outMUXINM);
     regfile BANCO(clk,we3,RA1,RA2,WA3,WD3,RD1,RD2);
     alu ALU(outMUXINM,RD2,op_alu,WD3,zALU, cALU);
     ffd FFZ(clk,reset,zALU,wez,z);
