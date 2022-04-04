@@ -11,8 +11,8 @@ module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, input wire [
     assign RA2 = INST[7:4];
     assign WA3 = INST[3:0];
 
-    assign INM = INST[11:4];
-    assign DIR_SALTO = INST[9:0];
+    assign INM = INST[23:8];
+    assign DIR_SALTO = INST[15:6];
 
     assign opcode = INST[31:16];
 
@@ -29,6 +29,6 @@ module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, input wire [
     //mux2 #(16) MUXALU(outALU,INM,s_inm,WD3);
     
     stack PILA(outSUMDIR, reset, push, pop, clk, outSTACK);
-    mux2 #(10) MUXSTACK(outMUXDIR, outSTACK,pop, outMUXSTACK);
+    mux2 #(10) MUXSTACK(outMUXDIR, outSTACK, pop, outMUXSTACK);
 
 endmodule

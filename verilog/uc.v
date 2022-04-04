@@ -1,64 +1,79 @@
-module uc(input wire [15:0] opcode, input wire z, carry, output reg s_inc, s_inm, we3, wez, push, pop, output reg [2:0] op_alu);
+module uc(input wire [15:0] opcode, input wire z, carry, output reg s_inc, we3, wez, push, pop, output wire s_inm, output wire [2:0] op_alu);
 
   assign op_alu = opcode[26:24];
-  assign s_inm = opcode[27];
+  assign s_inm = opcode[28];
 
-  always @(opcode)
-  begin
-    s_inc = 1'b1;
-    wez = 1'b0;
-    we3 = 1'b0;
-    push = 1'b0;
-    pop = 1'b0;
+  always @(opcode) begin
     casez (opcode)
-      16'b101?????????????: begin
+      16'b000?1???????????: begin // Cualquier operación que use la alu
         wez = z;
         we3 = 1'b1;
+        s_inc = 1'b1;
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b100?????????????: begin
-        we3 = 1'b1;
-      end
-      16'b11??????????????: begin
-        we3 = 1'b1;
-      end
-      16'b01???????????01?: begin
-        wez = z;
-        we3 = 1'b1;
-      end
-      16'b01???????????00?: begin
-        we3 = 1'b1;
-      end
-      16'b01???????????1??: begin
-        we3 = 1'b1;
-      end
-      16'b001??????????000: begin //J
+      16'b0000000000000000: begin // J
+        wez = 1'b0;
+        we3 = 1'b0;
         s_inc = 1'b0;
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b001??????????001: begin //JZ
+      16'b0000000000000001: begin // JZ
+        wez = 1'b0;
+        we3 = 1'b0;
         s_inc = ~z;
-        
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b001??????????010: begin //JNZ
+      16'b0000000000000010: begin // JNZ
+        wez = 1'b0;
+        we3 = 1'b0;
         s_inc = z;
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b001??????????011: begin //JA
-        s_inc = ~z & ~carry;
+      16'b0000000000000011: begin // JA
+        wez = 1'b0;
+        we3 = 1'b0;
+        s_inc = z;
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b001??????????100: begin //JAE
-        s_inc = carry;
+      16'b0000000000000100: begin // JAE
+        wez = 1'b0;
+        we3 = 1'b0;
+        s_inc = z;
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b001??????????101: begin //JB
-        s_inc = ~carry;
+      16'b0000000000000101: begin // JB
+        wez = 1'b0;
+        we3 = 1'b0;
+        s_inc = z;
+        push = 1'b0;
+        pop = 1'b0;
       end
-      16'b001??????????110: begin //CALL
-        s_inc = 1'b0;
+      16'b0000000000000110: begin // CALL
+        wez = 1'b0;
+        we3 = 1'b0;
+        s_inc = z;
         push = 1'b1;
+        pop = 1'b0;
       end
-      16'b001??????????111: begin //RET
+      16'b0000000000000111: begin // RET
+        wez = 1'b0;
+        we3 = 1'b0;
+        s_inc = z;
+        push = 1'b0;
         pop = 1'b1;
       end
-      16'b0001?????????011: begin //CMP
-        wez = z;
+      default: begin
+        wez = 1'b0;
+        we3 = 1'b0;
+        s_inc = 1'b1;
+        push = 1'b0;
+        pop = 1'b0;
       end
     endcase
   end
