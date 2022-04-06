@@ -1,0 +1,146 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x8abb120 .scope module, "ffd" "ffd" 2 61;
+ .timescale 0 0;
+v0x8acbf68_0 .net "carga", 0 0, C4<z>; 0 drivers
+v0x8ae7168_0 .net "clk", 0 0, C4<z>; 0 drivers
+v0x8ae71c8_0 .net "d", 0 0, C4<z>; 0 drivers
+v0x8ae7228_0 .var "q", 0 0;
+v0x8ae7290_0 .net "reset", 0 0, C4<z>; 0 drivers
+E_0x8acc068 .event posedge, v0x8ae7290_0, v0x8ae7168_0;
+S_0x8aba838 .scope module, "mux2" "mux2" 2 50;
+ .timescale 0 0;
+P_0x8aa64c4 .param/l "WIDTH" 2 50, +C4<01000>;
+v0x8ae72f0_0 .net "d0", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae7360_0 .net "d1", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae73c0_0 .net "s", 0 0, C4<z>; 0 drivers
+v0x8ae7420_0 .net "y", 7 0, L_0x8ae8520; 1 drivers
+L_0x8ae8520 .functor MUXZ 8, C4<zzzzzzzz>, C4<zzzzzzzz>, C4<z>, C4<>;
+S_0x8aa9188 .scope module, "mux4" "mux4" 2 73;
+ .timescale 0 0;
+P_0x8acb9cc .param/l "WIDTH" 2 73, +C4<01000>;
+v0x8ae7488_0 .net *"_s1", 0 0, L_0x8ae8600; 1 drivers
+v0x8ae74f8_0 .net *"_s3", 0 0, L_0x8ae8690; 1 drivers
+v0x8ae7558_0 .net *"_s4", 7 0, L_0x8ae8700; 1 drivers
+v0x8ae75b8_0 .net *"_s7", 0 0, L_0x8ae87a8; 1 drivers
+v0x8ae7620_0 .net *"_s8", 7 0, L_0x8ae8830; 1 drivers
+v0x8ae7680_0 .net "d0", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae7700_0 .net "d1", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae7760_0 .net "d2", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae77e8_0 .net "d3", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae7848_0 .net "s", 1 0, C4<zz>; 0 drivers
+v0x8ae78d8_0 .net "y", 7 0, L_0x8ae88f8; 1 drivers
+L_0x8ae8600 .part C4<zz>, 1, 1;
+L_0x8ae8690 .part C4<zz>, 0, 1;
+L_0x8ae8700 .functor MUXZ 8, C4<zzzzzzzz>, C4<zzzzzzzz>, L_0x8ae8690, C4<>;
+L_0x8ae87a8 .part C4<zz>, 0, 1;
+L_0x8ae8830 .functor MUXZ 8, C4<zzzzzzzz>, C4<zzzzzzzz>, L_0x8ae87a8, C4<>;
+L_0x8ae88f8 .functor MUXZ 8, L_0x8ae8830, L_0x8ae8700, L_0x8ae8600, C4<>;
+S_0x8acc870 .scope module, "regfile" "regfile" 2 4;
+ .timescale 0 0;
+v0x8ae7958_0 .net *"_s0", 4 0, L_0x8ae8a30; 1 drivers
+v0x8ae79c8_0 .net *"_s10", 15 0, C4<0000000000000000>; 1 drivers
+v0x8ae7a28_0 .net *"_s14", 4 0, L_0x8ae8d80; 1 drivers
+v0x8ae7a88_0 .net *"_s17", 0 0, C4<0>; 1 drivers
+v0x8ae7ad8_0 .net *"_s18", 4 0, C4<00000>; 1 drivers
+v0x8ae7b38_0 .net *"_s20", 0 0, L_0x8ae8e70; 1 drivers
+v0x8ae7bb8_0 .net *"_s22", 15 0, L_0x8ae8f50; 1 drivers
+v0x8ae7c18_0 .net *"_s24", 15 0, C4<0000000000000000>; 1 drivers
+v0x8ae7c78_0 .net *"_s3", 0 0, C4<0>; 1 drivers
+v0x8ae7cd8_0 .net *"_s4", 4 0, C4<00000>; 1 drivers
+v0x8ae7d68_0 .net *"_s6", 0 0, L_0x8ae8ae0; 1 drivers
+v0x8ae7dc8_0 .net *"_s8", 15 0, L_0x8ae8bc0; 1 drivers
+v0x8ae7e60_0 .net "clk", 0 0, C4<z>; 0 drivers
+v0x8ae7ec0_0 .net "ra1", 3 0, C4<zzzz>; 0 drivers
+v0x8ae7f60_0 .net "ra2", 3 0, C4<zzzz>; 0 drivers
+v0x8ae7fc0_0 .net "rd1", 15 0, L_0x8ae8c70; 1 drivers
+v0x8ae8068_0 .net "rd2", 15 0, L_0x8ae9020; 1 drivers
+v0x8ae80c8 .array "regb", 15 0, 15 0;
+v0x8ae8168_0 .net "wa3", 3 0, C4<zzzz>; 0 drivers
+v0x8ae81b8_0 .net "wd3", 15 0, C4<zzzzzzzzzzzzzzzz>; 0 drivers
+v0x8ae8118_0 .net "we3", 0 0, C4<z>; 0 drivers
+E_0x8ae76d0 .event posedge, v0x8ae7e60_0;
+L_0x8ae8a30 .concat [ 4 1 0 0], C4<zzzz>, C4<0>;
+L_0x8ae8ae0 .cmp/ne 5, L_0x8ae8a30, C4<00000>;
+L_0x8ae8bc0 .array/port v0x8ae80c8, C4<zzzz>;
+L_0x8ae8c70 .functor MUXZ 16, C4<0000000000000000>, L_0x8ae8bc0, L_0x8ae8ae0, C4<>;
+L_0x8ae8d80 .concat [ 4 1 0 0], C4<zzzz>, C4<0>;
+L_0x8ae8e70 .cmp/ne 5, L_0x8ae8d80, C4<00000>;
+L_0x8ae8f50 .array/port v0x8ae80c8, C4<zzzz>;
+L_0x8ae9020 .functor MUXZ 16, C4<0000000000000000>, L_0x8ae8f50, L_0x8ae8e70, C4<>;
+S_0x8acc8f0 .scope module, "registro" "registro" 2 38;
+ .timescale 0 0;
+P_0x8acbac4 .param/l "WIDTH" 2 38, +C4<01000>;
+v0x8ae8270_0 .net "clk", 0 0, C4<z>; 0 drivers
+v0x8ae82e0_0 .net "d", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x8ae8340_0 .var "q", 7 0;
+v0x8ae83a0_0 .net "reset", 0 0, C4<z>; 0 drivers
+E_0x8ae7b88 .event posedge, v0x8ae83a0_0, v0x8ae8270_0;
+S_0x8acdb38 .scope module, "sum" "sum" 2 30;
+ .timescale 0 0;
+v0x8ae83f0_0 .net "a", 9 0, C4<zzzzzzzzzz>; 0 drivers
+v0x8ae8460_0 .net "b", 9 0, C4<zzzzzzzzzz>; 0 drivers
+v0x8ae84c0_0 .net "y", 9 0, L_0x8ae9140; 1 drivers
+L_0x8ae9140 .arith/sum 10, C4<zzzzzzzzzz>, C4<zzzzzzzzzz>;
+    .scope S_0x8abb120;
+T_0 ;
+    %wait E_0x8acc068;
+    %load/v 8, v0x8ae7290_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x8ae7228_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x8acbf68_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %load/v 8, v0x8ae71c8_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x8ae7228_0, 0, 8;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x8acc870;
+T_1 ;
+    %vpi_call 2 14 "$readmemb", "regfile.dat", v0x8ae80c8;
+    %end;
+    .thread T_1;
+    .scope S_0x8acc870;
+T_2 ;
+    %wait E_0x8ae76d0;
+    %load/v 8, v0x8ae8118_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %load/v 8, v0x8ae81b8_0, 16;
+    %ix/getv 3, v0x8ae8168_0;
+    %jmp/1 t_0, 4;
+    %ix/load 0, 16, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x8ae80c8, 0, 8;
+t_0 ;
+T_2.0 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x8acc8f0;
+T_3 ;
+    %wait E_0x8ae7b88;
+    %load/v 8, v0x8ae83a0_0, 1;
+    %jmp/0xz  T_3.0, 8;
+    %ix/load 0, 8, 0;
+    %assign/v0 v0x8ae8340_0, 0, 0;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/v 8, v0x8ae82e0_0, 8;
+    %ix/load 0, 8, 0;
+    %assign/v0 v0x8ae8340_0, 0, 8;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "verilog/componentes.v";

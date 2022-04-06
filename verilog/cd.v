@@ -1,9 +1,9 @@
-module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, input wire [2:0] op_alu, output wire z, carry, output wire [15:0] opcode);
+module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, s_ent, input wire [1:0] port, input wire [2:0] op_alu, input wire [15:0] p0, p1, p2, p3, output wire z, carry, output wire [15:0] opcode);
 //Camino de datos de instrucciones de un solo ciclo
 
     wire [31:0] INST;
     wire [9:0] counter, outMUXDIR, DIR_SALTO, outSUMDIR, outMUXSTACK, outSTACK;
-    wire [15:0] INM, WD3, RD1, RD2, outMUXINM;
+    wire [15:0] INM, WD3, RD1, RD2, outMUXINM, outMUXPORTS;
     wire [3:0] RA1, RA2, WA3;
     wire zALU, cALU;
 
@@ -16,19 +16,34 @@ module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, input wire [
 
     assign opcode = INST[31:16];
 
+    
+    //PC
     registro #(10) PC(clk, reset, outMUXSTACK, counter);
     memprog MemProg(clk,counter,INST);
     sum SUMDIR(10'b1,counter,outSUMDIR);
     mux2 #(10) MUXDIR(DIR_SALTO,outSUMDIR,s_inc,outMUXDIR);
     
-    mux2 #(16) MUXINM(RD1,INM,s_inm,outMUXINM);
+    //REGISTROS Y ALU
+    mux2 #(16) MUXINM(RD1,outMUXENT,s_inm,outMUXINM);
     regfile BANCO(clk,we3,RA1,RA2,WA3,WD3,RD1,RD2);
     alu ALU(outMUXINM,RD2,op_alu,WD3,zALU, cALU);
     ffd FFZ(clk,reset,zALU,wez,z);
     ffd FFC(clk,reset,cALU,wez,carry);
-    //mux2 #(16) MUXALU(outALU,INM,s_inm,WD3);
     
+    
+    //PILA
     stack PILA(outSUMDIR, reset, push, pop, clk, outSTACK);
     mux2 #(10) MUXSTACK(outMUXDIR, outSTACK, pop, outMUXSTACK);
 
+    //INTERRUPCIONES
+    //MUX DE ? QUE SACA LA SUBRUTINA CORRESPONDIENTE
+    
+    
+    //ENTRADA
+    mux4 #(16) MUXINPORT(p0,p1,p2,p3, port, outMUXPORTS);
+    mux2 #(16) MUXENT(INM, outMUXPORTS, s_ent, outMUXENT);
+    
+    
+    //SALIDA
+    
 endmodule

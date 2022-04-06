@@ -1,0 +1,7 @@
+ interrupciones, entra una señal, saltamos a una subrutina que la resuelve
+ 
+ entrada y salida, entrada tenemos una instruccion que lea del puerto de entrada y guarde en un registro y salida metemos el valor que nos diga la instrucción y lo dejamos en un registro de salida
+ 
+ timer
+ 
+ 
