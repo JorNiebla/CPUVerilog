@@ -1,9 +1,9 @@
-module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, s_ent, input wire [1:0] port, input wire [2:0] op_alu, input wire [15:0] p0, p1, p2, p3, output wire z, carry, output wire [15:0] opcode);
+module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, s_ent, s_sal, input wire [1:0] port, input wire [2:0] op_alu, input wire [15:0] p0, p1, p2, p3, output wire z, carry, output wire [15:0] opcode, output reg [15:0] salida);
 //Camino de datos de instrucciones de un solo ciclo
 
     wire [31:0] INST;
     wire [9:0] counter, outMUXDIR, DIR_SALTO, outSUMDIR, outMUXSTACK, outSTACK;
-    wire [15:0] INM, WD3, RD1, RD2, outMUXINM, outMUXPORTS;
+    wire [15:0] INM, WD3, RD1, RD2, outMUXINM, outMUXPORTS, outMUXENT;
     wire [3:0] RA1, RA2, WA3;
     wire zALU, cALU;
 
@@ -45,5 +45,7 @@ module cd(input wire clk, reset, s_inc, s_inm, we3, wez, push, pop, s_ent, input
     
     
     //SALIDA
+    always @ (s_sal)
+        salida = outMUXINM;
     
 endmodule

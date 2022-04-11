@@ -6,6 +6,8 @@ module cpu_tb;
 reg clk, reset;
 reg [15:0] p0, p1, p2, p3;
 
+wire [15:0] salida;
+
 
 // generación de reloj clk
 always //siempre activo, no hay condición de activación
@@ -17,7 +19,7 @@ begin
 end
 
 // instanciación del procesador
-cpu micpu(clk, reset, p0, p1, p2 ,p3);
+cpu micpu(clk, reset, p0, p1, p2, p3, salida);
 
 initial
 begin
